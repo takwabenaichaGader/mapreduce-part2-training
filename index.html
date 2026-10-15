@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Entraînement interactif MapReduce — Partie 2 du cours Big Data." />
+  <title>MapReduce — Think Like a Data Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="brand-mark" aria-hidden="true">MR</div>
+      <div>
+        <div class="eyebrow">Big Data · Partie 2</div>
+        <div class="brand-title">MapReduce — Think Like a Data Engineer</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <a class="author-link" href="https://www.doyoubuzz.com/takwa-ben-aicha-gder" target="_blank" rel="noopener" aria-label="CV en ligne de Dr. Ing. Takwa Ben Aïcha Gader">Dr. Ing. Takwa Ben Aïcha Gader ↗</a>
+      <div class="header-actions">
+        <button id="homeBtn" class="ghost-btn" type="button">Accueil</button>
+        <button id="reviewBtn" class="ghost-btn" type="button">Réviser mes erreurs</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="homeView" class="view home-view" aria-labelledby="homeTitle">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Autoévaluation guidée · 30 situations</div>
+          <h1 id="homeTitle">Comprendre, concevoir et optimiser un traitement distribué.</h1>
+          <p class="hero-lead">Ici, vous ne récitez pas MapReduce. Vous partez d’un problème métier, choisissez une clé, construisez Map, anticipez le Shuffle et justifiez Reduce.</p>
+          <div class="hero-actions">
+            <button id="startBtn" class="primary-btn" type="button">Commencer l’entraînement</button>
+            <button id="resumeBtn" class="secondary-btn" type="button">Reprendre ma progression</button>
+          </div>
+          <div class="hero-note">Progression enregistrée localement sur cet appareil. Aucun compte requis.</div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/images/pipeline.png" alt="" />
+        </div>
+      </div>
+
+      <section class="dashboard" aria-labelledby="dashTitle">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Tableau de bord</div>
+            <h2 id="dashTitle">Votre maîtrise par notion</h2>
+          </div>
+          <button id="resetBtn" class="text-btn danger" type="button">Réinitialiser</button>
+        </div>
+        <div id="globalStats" class="global-stats"></div>
+        <div id="skillGrid" class="skill-grid"></div>
+      </section>
+
+      <section class="method-strip" aria-label="Méthode de raisonnement">
+        <div><span>1</span><strong>Question métier</strong><small>Que veux-je calculer ?</small></div>
+        <div><span>2</span><strong>Clé</strong><small>Quel axe de regroupement ?</small></div>
+        <div><span>3</span><strong>Map</strong><small>Que doit émettre chaque ligne ?</small></div>
+        <div><span>4</span><strong>Shuffle</strong><small>Qu’est-ce qui doit voyager ?</small></div>
+        <div><span>5</span><strong>Reduce</strong><small>Quelle agrégation finale ?</small></div>
+      </section>
+    </section>
+
+    <section id="quizView" class="view quiz-view hidden" aria-live="polite">
+      <div class="quiz-shell">
+        <aside class="quiz-sidebar">
+          <div class="progress-card">
+            <div class="progress-meta"><span id="progressText">Exercice 1 / 30</span><span id="progressPct">3%</span></div>
+            <div class="progress-track" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
+          </div>
+          <div class="level-box">
+            <div class="eyebrow">Niveau</div>
+            <div id="levelLabel" class="level-label"></div>
+            <div id="categoryLabel" class="category-label"></div>
+          </div>
+          <nav id="questionNav" class="question-nav" aria-label="Navigation entre exercices"></nav>
+        </aside>
+
+        <article class="exercise-card">
+          <div class="exercise-topline">
+            <div id="exerciseCategory" class="pill"></div>
+            <div id="exerciseState" class="state-dot">À faire</div>
+          </div>
+          <h2 id="exerciseTitle"></h2>
+          <p id="exerciseIntro" class="exercise-intro"></p>
+          <figure id="exerciseFigure" class="exercise-figure hidden">
+            <img id="exerciseImage" src="" alt="Illustration pédagogique de l’exercice" />
+          </figure>
+          <div id="exercisePrompt" class="exercise-prompt"></div>
+          <form id="answerForm" class="answer-form"></form>
+
+          <div class="answer-actions">
+            <button id="hintBtn" class="secondary-btn" type="button">Afficher un indice</button>
+            <button id="checkBtn" class="primary-btn" type="button">Vérifier ma réponse</button>
+          </div>
+          <div id="hintBox" class="hint-box hidden"></div>
+          <div id="feedbackBox" class="feedback-box hidden" role="status"></div>
+          <div id="solutionBox" class="solution-box hidden"></div>
+
+          <div class="exercise-footer">
+            <button id="prevBtn" class="ghost-btn" type="button">← Précédent</button>
+            <button id="showSolutionBtn" class="text-btn hidden" type="button">Voir la solution expliquée</button>
+            <button id="nextBtn" class="ghost-btn" type="button">Suivant →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="resultsView" class="view results-view hidden" aria-labelledby="resultsTitle">
+      <div class="results-card">
+        <div class="eyebrow">Bilan personnalisé</div>
+        <h2 id="resultsTitle">Votre diagnostic MapReduce</h2>
+        <div id="resultHero" class="result-hero"></div>
+        <div class="results-grid">
+          <div>
+            <h3>Notions maîtrisées</h3>
+            <div id="masteredList" class="tag-list"></div>
+          </div>
+          <div>
+            <h3>Notions à revoir</h3>
+            <div id="reviewList" class="tag-list"></div>
+          </div>
+        </div>
+        <div id="recommendation" class="recommendation"></div>
+        <div class="results-actions">
+          <button id="resultsReviewBtn" class="primary-btn" type="button">Réviser mes erreurs</button>
+          <button id="restartBtn" class="secondary-btn" type="button">Refaire les 30 exercices</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026/2027 · Big Data · ISIMa</div>
+    <div><a href="https://www.doyoubuzz.com/takwa-ben-aicha-gder" target="_blank" rel="noopener">Dr. Ing. Takwa Ben Aïcha Gader ↗</a></div>
+  </footer>
+
+  <script src="data/exercises.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
